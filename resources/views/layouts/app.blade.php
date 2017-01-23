@@ -11,7 +11,8 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <link href="/css/app.css" rel="stylesheet">
+    <link href="css/app.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
@@ -43,7 +44,10 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;
+                        <li><a href="">Subscriber List</a></li>
+                        <li><a href="">Subscriber Add New</a></li>
+                        <li><a href="">Send Mail</a></li>
+                        <li><a href="">Settings</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -82,6 +86,6 @@
     </div>
 
     <!-- Scripts -->
-    <script src="/js/app.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>
