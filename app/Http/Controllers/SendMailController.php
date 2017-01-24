@@ -1,7 +1,28 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: miusov
- * Date: 23.01.2017
- * Time: 7:19
- */
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class SendMailController extends Controller
+{
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return view('sendMail');
+    }
+}

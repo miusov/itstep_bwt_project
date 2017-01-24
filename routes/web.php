@@ -18,3 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+Route::get('/sublist', 'SubListController@index');
+Route::get('/subaddnew', 'SubAddNewController@index');
+Route::get('/sendmail', 'SendMailController@index');
+Route::get('/settings', 'settingsController@index');

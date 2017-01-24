@@ -36,7 +36,7 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
+                    <a class="navbar-brand" href="{{ url('/') }}" style="color: darkblue">
                         {{ config('app.name', 'Laravel') }}
                     </a>
                 </div>
@@ -44,10 +44,10 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        <li><a href="">Subscriber List</a></li>
-                        <li><a href="">Subscriber Add New</a></li>
-                        <li><a href="">Send Mail</a></li>
-                        <li><a href="">Settings</a></li>
+                        <li><a href="{{ url('/sublist') }}">Subscriber List</a></li>
+                        <li><a href="{{ url('/subaddnew') }}">Subscriber Add New</a></li>
+                        <li><a href="{{ url('/sendmail') }}">Send Mail</a></li>
+                        <li><a href="{{ url('/settings') }}">Settings</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -63,13 +63,8 @@
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href="{{ url('/logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
-
+                                    <li><a href="{{ url('/home') }}">Home</a></li>
+                                    <li><a href="{{ url('/logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>
                                         <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
                                         </form>
