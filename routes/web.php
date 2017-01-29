@@ -19,9 +19,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 Route::get('/sublist', 'SubListController@index');
-Route::get('/subaddnew', 'SubAddNewController@index');
 Route::get('/sendmail', 'SendMailController@index');
-Route::get('/settings', 'settingsController@index');
+Route::get('/settings', 'SettingsController@index');
 Route::get('/model', 'HomeController@model');
 Route::group(['middleware' => 'auth'], function (){
 	Route::resource('subscribers', 'SubscriberController');

@@ -12,7 +12,7 @@
 
     <!-- Styles -->
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
-    <link href="{{asset('css/app.css')}}css/style.css" rel="stylesheet">
+    <link href="{{asset('css/style.css')}}" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
@@ -44,8 +44,8 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        <li><a href="{{ url('/sublist') }}">Subscriber List</a></li>
-                        <li><a href="{{ url('/subaddnew') }}">Subscriber Add New</a></li>
+                        <li><a href="{{ url('/subscribers/show') }}">Subscriber List</a></li>
+                        <li><a href="{{ url('/subscribers/create') }}">Subscriber Add New</a></li>
                         <li><a href="{{ url('/sendmail') }}">Send Mail</a></li>
                         <li><a href="{{ url('/settings') }}">Settings</a></li>
                     </ul>

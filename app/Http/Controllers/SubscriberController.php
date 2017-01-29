@@ -4,6 +4,7 @@ namespace itstep\Http\Controllers;
 
 use Illuminate\Http\Request;
 use itstep\Models\Subscriber as SubscriberModel;
+use itstep\Models\Subscriber;
 
 class SubscriberController extends Controller
 {
@@ -14,7 +15,8 @@ class SubscriberController extends Controller
      */
     public function index()
     {
-        //
+      $subscribers = DB::select('select * from subscribers where user_id = ?', [1]);
+      return view('subscribers.list', ['subscribers' => $subscribers]);
     }
 
     /**
