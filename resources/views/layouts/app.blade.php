@@ -44,7 +44,7 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        <li><a href="{{ url('/subscribers/show') }}">Subscriber List</a></li>
+                        <li><a href="{{ url('/subscribers') }}">Subscriber List</a></li>
                         <li><a href="{{ url('/subscribers/create') }}">Subscriber Add New</a></li>
                         <li><a href="{{ url('/sendmail') }}">Send Mail</a></li>
                         <li><a href="{{ url('/settings') }}">Settings</a></li>

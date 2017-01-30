@@ -5,36 +5,25 @@ namespace itstep\Http\Controllers;
 use Illuminate\Http\Request;
 use itstep\Models\Subscriber as SubscriberModel;
 use itstep\Models\Subscriber;
+use DB;
+use Auth;
 
 class SubscriberController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-      $subscribers = DB::select('select * from subscribers where user_id = ?', [1]);
+      $subscribers = DB::select('select * from subscribers where user_id = ? ORDER BY created_at DESC', [ Auth::user()->id ]);
       return view('subscribers.list', ['subscribers' => $subscribers]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         return view('subscribers.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
         $this->validator($request->all())->validate();
@@ -45,7 +34,9 @@ class SubscriberController extends Controller
             'last_name' => $request->get('last_name'),
             'email' => $request->get('email')
             ]);
+        return redirect()->route('subscribers.index')->with('message', 'Subscriber '.$request->get("email").' created successfully');
     }
+
 
     protected function validator(array $data)
     {
@@ -56,48 +47,32 @@ class SubscriberController extends Controller
             ]);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
-        //
+        $subscriber = Subscriber::find($id);
+        return view('subscribers.show',compact('subscriber'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
-        //
+        $subscriber = Subscriber::find($id);
+        return view('subscribers.edit',compact('subscriber'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $id)
     {
-        //
+        $this->validator($request->all())->validate();
+        Subscriber::find($id)->update($request->all());
+        return redirect()->route('subscribers.index')->with('message','Subscriber '.$request->get("email").' updated successfully');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
-        //
+        Subscriber::find($id)->delete();
+        return redirect()->route('subscribers.index')->with('message','Item deleted successfully');
     }
 }
