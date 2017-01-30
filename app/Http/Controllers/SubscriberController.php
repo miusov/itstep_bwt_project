@@ -73,6 +73,6 @@ class SubscriberController extends Controller
     public function destroy($id)
     {
         Subscriber::find($id)->delete();
-        return redirect()->route('subscribers.index')->with('message','Item deleted successfully');
+        return redirect()->route('subscribers.index')->with('message','Subscriber deleted successfully');
     }
 }

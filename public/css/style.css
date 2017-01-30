@@ -3,3 +3,17 @@
     background-position: center;
     height: 750px;
 }
+
+th, td{
+    text-align: center;
+}
+table th{
+    cursor: pointer;
+}
+table th:hover{
+    background-color: #ddd;
+}
+
+table .btn{
+    padding: 0 10px;
+}
