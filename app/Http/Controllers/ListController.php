@@ -86,7 +86,6 @@ class ListController extends Controller
      */
     public function destroy($id)
     {
-        ListModel::findOrFail($id)->dalete();
         $list = ListModel::findOrFail($id);
         $list->delete();
         return redirect()->back()->with(['flash_message' => 'List'.$list->name.'successfully deleted']);

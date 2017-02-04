@@ -3,7 +3,6 @@
 
 @section('content')
 
-
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
@@ -17,7 +16,7 @@
                                 <label for="first_name" class="col-md-4 control-label">New First name</label>
 
                                 <div class="col-md-6">
-                                    <input id="first_name" type="text" class="form-control" name="first_name" value="{{ old('first_name') }}" required autofocus>
+                                    <input id="first_name" type="text" class="form-control" name="first_name" value="{{ $subscriber->first_name }}" required autofocus>
 
                                     @if ($errors->has('first_name'))
                                         <span class="help-block">
@@ -31,7 +30,7 @@
                                 <label for="last_name" class="col-md-4 control-label">New Last Name</label>
 
                                 <div class="col-md-6">
-                                    <input id="last_name" type="text" class="form-control" name="last_name" required>
+                                    <input id="last_name" type="text" class="form-control" name="last_name" value="{{ $subscriber->last_name }}" required>
 
                                     @if ($errors->has('last_name'))
                                         <span class="help-block">
@@ -44,7 +43,7 @@
                                 <label for="last_name" class="col-md-4 control-label">New E-Mail Address</label>
 
                                 <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control" name="email" required value="{{ old('email') }}">
+                                    <input id="email" type="email" class="form-control" name="email" required value="{{ $subscriber->email }}">
 
                                     @if ($errors->has('email'))
                                         <span class="help-block">

@@ -3,6 +3,7 @@
 @section('content')
 
 <div class="container">
+<h1 class="text-center">Lists</h1>
 	<div class="panel panel-default">
 
 		@if ( \Session::has('flash_message') )
@@ -14,11 +15,8 @@
 
 		<div class="panel-heading">
 			<div class="row">
-				<div class="col-md-10">
-					Lists
-				</div>
-				<div class="col-md-2">
-					<a class="btn btn-default" href="{{url('/lists/create')}}">Add</a>
+				<div class="col-md-12 text-right">
+					<a class="btn btn-default" href="{{url('/lists/create')}}">Add New List</a>
 				</div>
 			</div>
 		</div>
@@ -28,8 +26,7 @@
 				<!-- Table Headings -->
 				<thead>
 					<th>Name</th>
-					<th></th>
-					<th></th>
+					<th>Option</th>
 				</thead>
 
 				<!-- Table Body -->

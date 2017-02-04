@@ -13,8 +13,7 @@ class SubscriberController extends Controller
 
     public function index()
     {
-      $subscribers = DB::select('select * from subscribers where user_id = ? ORDER BY created_at DESC', [ Auth::user()->id ]);
-      return view('subscribers.list', ['subscribers' => $subscribers]);
+      return view('subscribers.index',['subscribers' => SubscriberModel::all()]);
     }
 
 
@@ -34,7 +33,7 @@ class SubscriberController extends Controller
             'last_name' => $request->get('last_name'),
             'email' => $request->get('email')
             ]);
-        return redirect()->route('subscribers.index')->with('message', 'Subscriber '.$request->get("email").' created successfully');
+        return redirect()->route('subscribers.index')->with('flash_message', 'Subscriber '.$request->get("email").' created successfully');
     }
 
 
@@ -66,13 +65,13 @@ class SubscriberController extends Controller
     {
         $this->validator($request->all())->validate();
         Subscriber::find($id)->update($request->all());
-        return redirect()->route('subscribers.index')->with('message','Subscriber '.$request->get("email").' updated successfully');
+        return redirect()->route('subscribers.index')->with('flash_message','Subscriber '.$request->get("email").' updated successfully');
     }
 
 
     public function destroy($id)
     {
         Subscriber::find($id)->delete();
-        return redirect()->route('subscribers.index')->with('message','Subscriber deleted successfully');
+        return redirect()->route('subscribers.index')->with('flash_message','Subscriber deleted successfully');
     }
 }
