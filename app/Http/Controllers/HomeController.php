@@ -59,6 +59,13 @@ class HomeController extends Controller
 
         // Subscriber::find(2)->delete();  //удаляет запись
 
-        echo '<pre>'.print_r(User::find(1)->subscribers()->get()->toArray(),true).'</pre>';
+        // echo '<pre>'.print_r(User::find(1)->subscribers()->get()->toArray(),true).'</pre>';
+
+        //echo '<pre>'.print_r(Subscriber::onlyTrashed()->get(),true).'</pre>'; //показывает удаленные записи
+
+        //Subscriber::onlyTrashed()->find(2)->restore();  //восстанавливает удаленные записи
+
+        //Subscriber::find(2)->forceDelete(); //безвозвратное удаление записи
+
     }
 }

@@ -17,3 +17,7 @@ table th:hover{
 table .btn{
     padding: 0 10px;
 }
+
+table tbody tr:hover{
+	background-color: #ddd !important;
+}
