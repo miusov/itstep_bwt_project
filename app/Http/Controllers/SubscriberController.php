@@ -33,7 +33,7 @@ class SubscriberController extends Controller
             'last_name' => $request->get('last_name'),
             'email' => $request->get('email')
             ]);
-        return redirect()->route('subscribers.index')->with('flash_message', 'Subscriber '.$request->get("email").' created successfully');
+        return redirect()->route('subscribers.index')->with('flash_message',  trans('messages.creatsub'));
     }
 
 
@@ -65,13 +65,13 @@ class SubscriberController extends Controller
     {
         $this->validator($request->all())->validate();
         Subscriber::find($id)->update($request->all());
-        return redirect()->route('subscribers.index')->with('flash_message','Subscriber '.$request->get("email").' updated successfully');
+        return redirect()->route('subscribers.index')->with('flash_message', trans('messages.updsub'));
     }
 
 
     public function destroy($id)
     {
         Subscriber::find($id)->delete();
-        return redirect()->route('subscribers.index')->with('flash_message','Subscriber deleted successfully');
+        return redirect()->route('subscribers.index')->with('flash_message',trans('messages.delsub'));
     }
 }

@@ -48,11 +48,11 @@
                     <div class="collapse navbar-collapse" id="app-navbar-collapse">
                         <!-- Left Side Of Navbar -->
                         <ul class="nav navbar-nav">
-                        <li><a href="{{ url('/lists') }}">Lists</a></li>
-                            <li><a href="{{ url('/subscribers') }}">Subscriber List</a></li>
-                            <li><a href="{{ url('/subscribers/create') }}">Subscriber Add New</a></li>
-                            <li><a href="{{ url('/sendmail') }}">Send Mail</a></li>
-                            <li><a href="{{ url('/settings') }}">Settings</a></li>
+                            <li><a href="{{ url('/lists') }}">{{ trans('index.li1') }}</a></li>
+                            <li><a href="{{ url('/subscribers') }}">{{ trans('index.li2') }}</a></li>
+                            <li><a href="{{ url('/subscribers/create') }}">{{ trans('index.li3') }}</a></li>
+                            <li><a href="{{ url('/sendmail') }}">{{ trans('index.li4') }}</a></li>
+                            <li><a href="{{ url('/settings') }}">{{ trans('index.li5') }}</a></li>
                         </ul>
 
                         <!-- Right Side Of Navbar -->

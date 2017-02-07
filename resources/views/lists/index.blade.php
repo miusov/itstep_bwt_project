@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container">
-<h1 class="text-center">Lists</h1>
+<h1 class="text-center">{{ trans('subCategory.h1') }}</h1>
 	<div class="panel panel-default">
 
 		@if ( \Session::has('flash_message') )
@@ -16,7 +16,7 @@
 		<div class="panel-heading">
 			<div class="row">
 				<div class="col-md-12 text-right">
-					<a class="btn btn-default" href="{{url('/lists/create')}}">Add New List</a>
+					<a class="btn btn-default" href="{{url('/lists/create')}}">{{ trans('subCategory.addnew') }}</a>
 				</div>
 			</div>
 		</div>
@@ -25,8 +25,8 @@
 
 				<!-- Table Headings -->
 				<thead>
-					<th>Name</th>
-					<th>Option</th>
+					<th>{{ trans('subCategory.name') }}</th>
+					<th>{{ trans('subCategory.option') }}</th>
 				</thead>
 
 				<!-- Table Body -->
@@ -40,7 +40,7 @@
 							<form action="{{ url('/lists', $list->id) }}" method="POST">
 								{{ csrf_field() }}
 								{{ method_field('DELETE') }}
-								<button class="btn btn-danger">Delete</button>
+								<button class="btn btn-danger">{{ trans('subCategory.del') }}</button>
 							</form>
 						</td>
 					</tr>
