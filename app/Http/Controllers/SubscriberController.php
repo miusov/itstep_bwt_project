@@ -13,7 +13,8 @@ class SubscriberController extends Controller
 
     public function index()
     {
-      return view('subscribers.index',['subscribers' => SubscriberModel::all()]);
+        $subscribers = SubscriberModel::where('email', '<', 1)->paginate(20);
+      return view('subscribers.index',['subscribers' => $subscribers]);
     }
 
 
