@@ -26,3 +26,13 @@ Route::group(['middleware' => 'auth'], function (){
 	Route::resource('subscribers', 'SubscriberController');
 Route::resource('lists', 'ListController');
 });
+
+Route::get('setlocale/{locale}/', function ($locale) {
+
+    if (in_array($locale, \Config::get('app.locales'))) {
+        Cookie::queue(Cookie::forever('lang', $locale));
+    }
+
+    return redirect()->back();
+
+});

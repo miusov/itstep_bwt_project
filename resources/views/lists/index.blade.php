@@ -21,21 +21,24 @@
 			</div>
 		</div>
 		<div class="panel-body">
-			<table class="table table-striped task-table">
+			<table class="table table-striped task-table tablesorter" id="myTable">
 
 				<!-- Table Headings -->
 				<thead>
+					<th>№</th>
 					<th>{{ trans('subCategory.name') }}</th>
+					<th>{{ trans('subList.dateadd') }}</th>
 					<th>{{ trans('subCategory.option') }}</th>
 				</thead>
 
 				<!-- Table Body -->
 				<tbody>
+				<?php $i=1; ?>
 					@foreach ($lists as $list)
 					<tr>
-						<td class="table-text">
-							<div>{{ $list->name }}</div>
-						</td>
+						<td>{{$i++}}</td>
+						<td>{{ $list->name }}</td>
+						<td>{{ $list->created_at }}</td>
 						<td>
 							<form action="{{ url('/lists', $list->id) }}" method="POST">
 								{{ csrf_field() }}

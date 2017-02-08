@@ -8,7 +8,7 @@
             <a href="{{ url('/logout') }}"
                onclick="event.preventDefault();
                 document.getElementById('logout-form').submit();">
-                Logout
+                {{ trans('index.logout') }}
             </a>
         </div>
     </div>

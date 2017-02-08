@@ -41,7 +41,7 @@ class ListController extends Controller
             'user_id' => \Auth::user()->id,
             'name' => $request->get('name')
             ]);
-        return redirect('/lists')->with(['flash_message' => 'List'.$list->name.'successfully created']);
+        return redirect('/lists')->with(['flash_message' => trans('messages.creatcat')]);
     }
 
     /**
@@ -88,6 +88,6 @@ class ListController extends Controller
     {
         $list = ListModel::findOrFail($id);
         $list->delete();
-        return redirect()->back()->with(['flash_message' => 'List'.$list->name.'successfully deleted']);
+        return redirect()->back()->with(['flash_message' => trans('messages.delcat')]);
     }
 }
