@@ -32,4 +32,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('itstep\Models\Subscriber');
     }
+
+    public function lists()
+    {
+        return $this->hasMany('itstep\Models\ListModel');
+    }
 }

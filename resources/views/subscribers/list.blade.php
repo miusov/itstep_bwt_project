@@ -24,7 +24,7 @@
                        <?php $i=1; ?>
                     @foreach($subscribers as $subscriber)
                             <tr><td>{{$i++}}</td><td>{{$subscriber->first_name}}</td><td>{{$subscriber->last_name}}</td><td>{{$subscriber->email}}</td><td>{{$subscriber->created_at}}</td><td>{{$subscriber->updated_at}}</td><td>
-                                    <a class="btn btn-primary" href="{{ route('subscribers.edit',$subscriber->id) }}">{{ trans('subList.edit') }}</a>  {!! Form::open(['method' => 'DELETE','route' => ['subscribers.destroy', $subscriber->id],'style'=>'display:inline']) !!}
+                                    <a class="btn btn-success" href="{{ route('subscribers.edit',$subscriber->id) }}">{{ trans('subList.edit') }}</a>  {!! Form::open(['method' => 'DELETE','route' => ['subscribers.destroy', $subscriber->id],'style'=>'display:inline']) !!}
                                     {!! Form::submit({{ trans('subList.del') }}, ['class' => 'btn btn-danger']) !!}
                                     {!! Form::close() !!}</td></tr>
                     @endforeach

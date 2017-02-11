@@ -7,6 +7,8 @@ return [
     'addnew' => 'Add New Category',
     'del' => 'Delete',
     'addnewcat' => 'Add New Category',
+    'updnewcat' => 'Update Category',
     'namecat' => 'Name',
     'add' => 'Add',
+    'upd' => 'Edit',
 ];

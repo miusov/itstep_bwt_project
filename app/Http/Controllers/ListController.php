@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use itstep\Models\ListModel;
 // use itstep\Http\Request\Lists\Create as CreateRequest;
 use itstep\Http\Requests\Lists\Create as CreateRequest;
+use itstep\User as UserModel;
+
 
 class ListController extends Controller
 {
@@ -16,7 +18,8 @@ class ListController extends Controller
      */
     public function index()
     {
-        return view('lists.index',['lists' => ListModel::all()]);
+        $lists = UserModel::find(\Auth::user()->id)->lists()->paginate(15);
+        return view('lists.index',['lists' => $lists]);
     }
 
     /**
@@ -26,7 +29,7 @@ class ListController extends Controller
      */
     public function create()
     {
-        return view('lists.create');
+        return view('lists.create', ['list' => new ListModel()]);
     }
 
     /**
@@ -41,7 +44,7 @@ class ListController extends Controller
             'user_id' => \Auth::user()->id,
             'name' => $request->get('name')
             ]);
-        return redirect('/lists')->with(['flash_message' => trans('messages.creatcat')]);
+        return redirect('/lists')->with(['flash_message' => trans('messages.creatcat',array('name' => $list->name))]);
     }
 
     /**
@@ -63,7 +66,8 @@ class ListController extends Controller
      */
     public function edit($id)
     {
-        //
+        $list = ListModel::findOrFail($id);
+        return view('lists.create', ['list' => $list]);
     }
 
     /**
@@ -73,9 +77,14 @@ class ListController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CreateRequest $request, $id)
     {
-        //
+        $list = ListModel::findOrFail($id);
+        $list->fill($request->only([
+            'name'
+            ]));
+        $list->save();
+        return redirect('/lists')->with(['flash_message' => trans('messages.updcat',array('name' => $list->name))]);
     }
 
     /**
@@ -84,10 +93,9 @@ class ListController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(ListModel $list)
     {
-        $list = ListModel::findOrFail($id);
         $list->delete();
-        return redirect()->back()->with(['flash_message' => trans('messages.delcat')]);
+        return redirect()->back()->with(['flash_message' => trans('messages.delcat',array('name' => $list->name))]);
     }
 }

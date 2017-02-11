@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container">
-<h1 class="text-center">{{ trans('subCategory.h1') }}</h1>
+	<h1 class="text-center">{{ trans('subCategory.h1') }}</h1>
 	<div class="panel panel-default">
 
 		@if ( \Session::has('flash_message') )
@@ -16,7 +16,7 @@
 		<div class="panel-heading">
 			<div class="row">
 				<div class="col-md-12 text-right">
-					<a class="btn btn-default" href="{{url('/lists/create')}}">{{ trans('subCategory.addnew') }}</a>
+					<a class="btn btn-success" href="{{url('/lists/create')}}">{{ trans('subCategory.addnew') }}</a>
 				</div>
 			</div>
 		</div>
@@ -33,14 +33,20 @@
 
 				<!-- Table Body -->
 				<tbody>
-				<?php $i=1; ?>
+					<?php $i=1; ?>
 					@foreach ($lists as $list)
 					<tr>
 						<td>{{$i++}}</td>
 						<td>{{ $list->name }}</td>
 						<td>{{ $list->created_at }}</td>
 						<td>
-							<form action="{{ url('/lists', $list->id) }}" method="POST">
+							<form action="{{ url('/lists', [$list->id, 'edit']) }}" method="POST" style="display: inline;">
+								{{ csrf_field() }}
+								{{ method_field('GET') }}
+
+								<button class="btn btn-success">{{ trans('subCategory.upd') }}</button>
+							</form>
+							<form action="{{ url('/lists', $list->id) }}" method="POST" style="display: inline;">
 								{{ csrf_field() }}
 								{{ method_field('DELETE') }}
 								<button class="btn btn-danger">{{ trans('subCategory.del') }}</button>
@@ -50,7 +56,9 @@
 					@endforeach
 				</tbody>
 			</table>
-
+			<div class="text-center">
+			{{ $lists->links() }}
+			</div>
 		</div>
 	</div>
 </div>

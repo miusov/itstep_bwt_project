@@ -54,7 +54,7 @@
                             <li><a href="{{ url('/lists') }}">{{ trans('index.li1') }}</a></li>
                             <li><a href="{{ url('/subscribers') }}">{{ trans('index.li2') }}</a></li>
                             <li><a href="{{ url('/subscribers/create') }}">{{ trans('index.li3') }}</a></li>
-                            <li><a href="{{ url('/sendmail') }}">{{ trans('index.li4') }}</a></li>
+                            <li><a href="{{ url('/send-email') }}">{{ trans('index.li4') }}</a></li>
                             <li><a href="{{ url('/settings') }}">{{ trans('index.li5') }}</a></li>
                         </ul>
 

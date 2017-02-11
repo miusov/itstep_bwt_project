@@ -36,3 +36,6 @@ Route::get('setlocale/{locale}/', function ($locale) {
     return redirect()->back();
 
 });
+
+Route::get('/send-email', 'SendController@form');
+Route::post('/send-email', 'SendController@send');
