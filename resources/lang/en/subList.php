@@ -17,5 +17,6 @@ return [
     'nlname' => 'New Last Name',
     'nemail' => 'New Email',
     'update' => 'Update',
+    'show' => 'Show',
 
 ];

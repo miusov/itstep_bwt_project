@@ -11,5 +11,9 @@ class ListModel extends Model
 
     protected $table = 'lists';  //указываем что работать будем с таблицей lists
     protected $fillable = ['user_id', 'name'];
+
+    public function subscribers(){
+        return $this->belongsToMany('itstep\Models\Subscriber','list_subscribers','list_id','subscriber_id');
+    }
     
 }

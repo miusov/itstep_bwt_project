@@ -22,9 +22,17 @@ Route::get('/sublist', 'SubListController@index');
 Route::get('/sendmail', 'SendMailController@index');
 Route::get('/settings', 'SettingsController@index');
 Route::get('/model', 'HomeController@model');
+
 Route::group(['middleware' => 'auth'], function (){
 	Route::resource('subscribers', 'SubscriberController');
-Route::resource('lists', 'ListController');
+    Route::resource('lists', 'ListController');
+    Route::get('/send-email', 'SendController@form');
+    Route::post('/send-email', 'SendController@send');
+
+    Route::post('/lists/addsubscriber','ListController@addsubscriber');
+    Route::post('/lists/delsubscriber','ListController@delsubscriber');
+    Route::get('/settings','SendController@showsettings')->middleware('locale');
+    Route::post('/setsettings','SendController@setsettings')->middleware('locale');
 });
 
 Route::get('setlocale/{locale}/', function ($locale) {

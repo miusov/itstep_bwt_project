@@ -7,6 +7,7 @@ use itstep\Models\ListModel;
 // use itstep\Http\Request\Lists\Create as CreateRequest;
 use itstep\Http\Requests\Lists\Create as CreateRequest;
 use itstep\User as UserModel;
+use itstep\Models\Subscriber as SubscriberModel;
 
 
 class ListController extends Controller
@@ -55,7 +56,11 @@ class ListController extends Controller
      */
     public function show($id)
     {
-        // реализовать просмотр списка подписчиков
+        $list = ListModel::findOrFail($id);
+//        $subscribers = SubscriberModel::find(\Auth::user()->id);
+        $list_subscribers = $list->subscribers()->get();
+
+        return view('lists.show',['list'=>$list,'list_subscribers'=>$list_subscribers]);
     }
 
     /**
@@ -97,5 +102,19 @@ class ListController extends Controller
     {
         $list->delete();
         return redirect()->back()->with(['flash_message' => trans('messages.delcat',array('name' => $list->name))]);
+    }
+
+    public function delsubscriber(Request $request){
+        $list=ListModel::findOrFail($request->list_id);
+        $list->subscribers()->detach($request->subscriber_id);
+        return redirect()->back();
+    }
+
+    public function addsubscriber(Request $request){
+//        $subscriber=SubscriberModel::findOrFail($request->subscriber_id);
+        $list=ListModel::findOrFail($request->list_id);
+        if (null ==($list->subscribers()->find($request->subscriber_id)))
+            $list->subscribers()->attach($request->subscriber_id);
+        return redirect()->back();
     }
 }

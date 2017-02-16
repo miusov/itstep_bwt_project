@@ -40,6 +40,13 @@
 						<td>{{ $list->name }}</td>
 						<td>{{ $list->created_at }}</td>
 						<td>
+							<form action="{{url('/lists',[$list->id])}}" method="post"  style="display: inline;>
+								{{csrf_field()}}
+								{{method_field('get')}}
+								<button class="btn btn-info">
+									{{ trans('subList.show') }}
+								</button>
+							</form>
 							<form action="{{ url('/lists', [$list->id, 'edit']) }}" method="POST" style="display: inline;">
 								{{ csrf_field() }}
 								{{ method_field('GET') }}
