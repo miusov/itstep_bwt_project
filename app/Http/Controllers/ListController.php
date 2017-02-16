@@ -55,7 +55,7 @@ class ListController extends Controller
      */
     public function show($id)
     {
-        //
+        // реализовать просмотр списка подписчиков
     }
 
     /**
