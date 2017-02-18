@@ -23,16 +23,19 @@ Route::get('/sendmail', 'SendMailController@index');
 Route::get('/settings', 'SettingsController@index');
 Route::get('/model', 'HomeController@model');
 
+Route::post('/list/add', 'ListController@add');
+
+Route::get('/lists/showlist','ListController@showlist');
+
 Route::group(['middleware' => 'auth'], function (){
 	Route::resource('subscribers', 'SubscriberController');
     Route::resource('lists', 'ListController');
     Route::get('/send-email', 'SendController@form');
     Route::post('/send-email', 'SendController@send');
-
     Route::post('/lists/addsubscriber','ListController@addsubscriber');
     Route::post('/lists/delsubscriber','ListController@delsubscriber');
-    Route::get('/settings','SendController@showsettings')->middleware('locale');
-    Route::post('/setsettings','SendController@setsettings')->middleware('locale');
+    Route::get('/settings','SettingsController@index')->middleware('locale');
+    Route::post('/setsettings','SettingsController@setsettings')->middleware('locale');
 });
 
 Route::get('setlocale/{locale}/', function ($locale) {
@@ -44,6 +47,3 @@ Route::get('setlocale/{locale}/', function ($locale) {
     return redirect()->back();
 
 });
-
-Route::get('/send-email', 'SendController@form');
-Route::post('/send-email', 'SendController@send');

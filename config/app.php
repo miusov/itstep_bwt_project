@@ -180,6 +180,11 @@ return [
         itstep\Providers\EventServiceProvider::class,
         itstep\Providers\RouteServiceProvider::class,
 
+
+        //на время разработки
+        Barryvdh\Debugbar\ServiceProvider::class,
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+
     ],
 
     /*
@@ -229,6 +234,9 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+
+        // на время разработки
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
 
     ],
 

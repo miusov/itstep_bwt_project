@@ -13,7 +13,8 @@ class SubscriberController extends Controller
 
     public function index()
     {
-        $subscribers = SubscriberModel::orderBy('created_at', 'desc')->paginate(15);
+        $subscribers = SubscriberModel::orderBy('created_at', 'desc')->where('user_id', '=', \Auth::user()->id)->paginate(15);
+
         return view('subscribers.index',['subscribers' => $subscribers]);
     }
 

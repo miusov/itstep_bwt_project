@@ -25,4 +25,9 @@ class SettingsController extends Controller
     {
         return view('settings');
     }
+
+    public function setsettings(Request $request){
+        echo "Set: ".$request->type;
+        return redirect()->back();
+    }
 }

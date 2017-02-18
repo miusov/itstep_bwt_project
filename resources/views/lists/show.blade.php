@@ -12,13 +12,7 @@
                 <div class="panel-heading">
                     <div class="row">
                         {{trans('lists.list')}}: <b>{{$list->name}}</b>
-
-                        <form action="{{url('/lists/addsubscriber')}}" method="post" style="float: right">
-                            {{csrf_field()}}
-                            {{--<input type="hidden" name="subscriber_id" value="{{$subscriber->id}}">--}}
-                            <input type="hidden" name="list_id" value="{{$list->id}}">
-                            <button class="btn btn-success">{{trans('subList.add')}}</button>
-                        </form>
+                            <a class="btn btn-success" style="float: right" href="{{url('/lists/showlist')}}">{{ trans('subList.add') }}</a>
                     </div>
                 </div>
                 <div class="panel-body">

@@ -4,10 +4,10 @@ namespace itstep\Http\Controllers;
 
 use Illuminate\Http\Request;
 use itstep\Models\ListModel;
-// use itstep\Http\Request\Lists\Create as CreateRequest;
-use itstep\Http\Requests\Lists\Create as CreateRequest;
+//use itstep\Http\Requests\Lists\Create as CreateRequest;
 use itstep\User as UserModel;
 use itstep\Models\Subscriber as SubscriberModel;
+use itstep\Models\List_SubModel;
 
 
 class ListController extends Controller
@@ -60,7 +60,7 @@ class ListController extends Controller
 //        $subscribers = SubscriberModel::find(\Auth::user()->id);
         $list_subscribers = $list->subscribers()->get();
 
-        return view('lists.show',['list'=>$list,'list_subscribers'=>$list_subscribers]);
+        return view('lists.show',['list'=>$list,'list_subscribers'=>$list_subscribers,'id'=>$id]);
     }
 
     /**
@@ -104,17 +104,36 @@ class ListController extends Controller
         return redirect()->back()->with(['flash_message' => trans('messages.delcat',array('name' => $list->name))]);
     }
 
-    public function delsubscriber(Request $request){
+    public function delsubscriber(Request $request)
+    {
         $list=ListModel::findOrFail($request->list_id);
         $list->subscribers()->detach($request->subscriber_id);
         return redirect()->back();
     }
 
-    public function addsubscriber(Request $request){
+//    public function addsubscriber(Request $request)
+//    {
 //        $subscriber=SubscriberModel::findOrFail($request->subscriber_id);
-        $list=ListModel::findOrFail($request->list_id);
-        if (null ==($list->subscribers()->find($request->subscriber_id)))
-            $list->subscribers()->attach($request->subscriber_id);
+//        $list=ListModel::findOrFail($request->list_id);
+//        if (null ==($list->subscribers()->find($request->subscriber_id)))
+//            $list->subscribers()->attach($request->subscriber_id);
+//        return redirect()->back();
+//    }
+
+    public function showlist()
+    {
+        $subscribers = SubscriberModel::orderBy('created_at', 'desc')->where('user_id', '=', \Auth::user()->id)->paginate(15);
+        return view('lists.subscribers',['subscribers' => $subscribers]);
+    }
+    
+    
+    public function add(Request $request)
+    {
+        List_SubModel::create([
+            'list_id' => $request->list_id,
+            'subscriber_id' => $request->subscriber_id
+        ]);
         return redirect()->back();
+    
     }
 }

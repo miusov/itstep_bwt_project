@@ -6,6 +6,8 @@ return [
 'to' => 'To',
 'subj' => 'Subject',
 'mess'=> 'Message',
-'send' => 'Send'
+'send' => 'Send',
+'settings' => 'Settings',
+'type' => 'Type',
 
 ];
