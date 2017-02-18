@@ -11,6 +11,8 @@ class Test extends Mailable
 {
     use Queueable, SerializesModels;
 
+    private $message;
+
     /**
      * Create a new message instance.
      *

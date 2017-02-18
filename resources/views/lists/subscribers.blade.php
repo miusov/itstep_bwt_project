@@ -31,7 +31,7 @@
                                     <form action="{{url('/list/add')}}" method="post">
                                         {{csrf_field()}}
                                         <input type="hidden" name="subscriber_id" value="{{$subscriber->id}}">
-                                        <input type="hidden" name="list_id" value="1">
+                                        <input type="hidden" name="list_id" value="{{$id}}">
                                         <button class="btn btn-success">{{trans('subscribers.add')}}</button>
                                     </form>                                </td>
                             </tr>

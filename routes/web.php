@@ -25,7 +25,7 @@ Route::get('/model', 'HomeController@model');
 
 Route::post('/list/add', 'ListController@add');
 
-Route::get('/lists/showlist','ListController@showlist');
+Route::get('/lists/showlist/{id}','ListController@showlist');
 
 Route::group(['middleware' => 'auth'], function (){
 	Route::resource('subscribers', 'SubscriberController');

@@ -12,7 +12,7 @@
                 <div class="panel-heading">
                     <div class="row">
                         {{trans('lists.list')}}: <b>{{$list->name}}</b>
-                            <a class="btn btn-success" style="float: right" href="{{url('/lists/showlist')}}">{{ trans('subList.add') }}</a>
+                            <a class="btn btn-success" style="float: right" href="{{url('/lists/showlist',$list->id)}}">{{ trans('subList.add') }}</a>
                     </div>
                 </div>
                 <div class="panel-body">

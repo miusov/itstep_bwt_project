@@ -14,7 +14,11 @@
              <label for="to" class="col-md-4 control-label">{{ trans('send.to') }}</label>
 
              <div class="col-md-6">
-               <input id="name" type="email" class="form-control" name="to" value="{{ old('to') }}" required autofocus>
+               <select name="list_id" class="form-control">
+                 @foreach($lists as $list)
+                  <option value="{{ $list->id }}">{{ $list->name }}</option>
+                 @endforeach 
+               </select>
 
                @if ($errors->has('to'))
                <span class="help-block">

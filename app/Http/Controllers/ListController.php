@@ -4,7 +4,7 @@ namespace itstep\Http\Controllers;
 
 use Illuminate\Http\Request;
 use itstep\Models\ListModel;
-//use itstep\Http\Requests\Lists\Create as CreateRequest;
+use itstep\Http\Requests\Lists\Create as CreateRequest;
 use itstep\User as UserModel;
 use itstep\Models\Subscriber as SubscriberModel;
 use itstep\Models\List_SubModel;
@@ -120,10 +120,10 @@ class ListController extends Controller
 //        return redirect()->back();
 //    }
 
-    public function showlist()
+    public function showlist($id)
     {
         $subscribers = SubscriberModel::orderBy('created_at', 'desc')->where('user_id', '=', \Auth::user()->id)->paginate(15);
-        return view('lists.subscribers',['subscribers' => $subscribers]);
+        return view('lists.subscribers',['subscribers' => $subscribers,'id'=>$id]);
     }
     
     
