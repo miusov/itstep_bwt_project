@@ -3,6 +3,7 @@
 namespace itstep\Http\Controllers;
 
 use Illuminate\Http\Request;
+use itstep\Models\SettingsModel;
 
 class SettingsController extends Controller
 {
@@ -27,7 +28,16 @@ class SettingsController extends Controller
     }
 
     public function setsettings(Request $request){
-        echo "Set: ".$request->type;
-        return redirect()->back();
+//        echo "Set: ".$request->type;
+//        return redirect()->back();
+
+        $type = SettingsModel::create([
+            'type' => $request->type
+        ]);
+
+
+        return redirect()->back()->with(['flash_message' => trans('messages.service',array('type' => $type->type))]);
+    
+
     }
 }

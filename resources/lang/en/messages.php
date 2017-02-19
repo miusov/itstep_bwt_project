@@ -7,4 +7,5 @@ return [
     'creatcat' => 'Category :name successfully created',
     'delcat' => 'Category :name successfully deleted',
     'updcat' => 'Category :name successfully updated',
+    'service' => 'Service :type selected',
 ];

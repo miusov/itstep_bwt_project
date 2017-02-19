@@ -4,6 +4,14 @@
     <div class="container">
         <div class="panel panel-default">
             <div class="panel-heading">{{trans('send.settings')}}</div>
+
+            @if ( \Session::has('flash_message') )
+                <div class="alert alert-success alert-dismissable">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    {{\Session::get('flash_message')}}
+                </div>
+            @endif
+
             <div class="panel-body row">
                 <form class="form-horizontal" role="form" method="POST" action="{{ url('/setsettings') }}">
                     {{csrf_field()}}
@@ -11,9 +19,9 @@
                         <div class="input-group">
                             <label for="type"  class="input-group-addon">{{trans('send.type')}}</label>
                             <select name="type" id="type" class="form-control">
-                                <option value="PHP">PHP</option>
-                                <option value="SMTP">SMTP</option>
-                                <option value="Mandrill">Mandrill</option>
+                                <option value="php">PHP</option>
+                                <option value="smtp">SMTP</option>
+                                <option value="mandril">Mandrill</option>
                             </select>
                         </div>
                     </div>
