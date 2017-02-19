@@ -108,7 +108,7 @@ class ListController extends Controller
     {
         $list=ListModel::findOrFail($request->list_id);
         $list->subscribers()->detach($request->subscriber_id);
-        return redirect()->back();
+        return redirect()->back()->with(['flash_message' => trans('messages.delsubs',array('name' => $request->name))]);
     }
 
 //    public function addsubscriber(Request $request)
@@ -129,11 +129,21 @@ class ListController extends Controller
     
     public function add(Request $request)
     {
+        $this->validator($request->all())->validate();
+
         List_SubModel::create([
             'list_id' => $request->list_id,
             'subscriber_id' => $request->subscriber_id
         ]);
-        return redirect()->back();
+        return redirect()->back()->with(['flash_message' => trans('messages.addsub', array('name' => $request->name))]);
     
+    }
+
+    protected function validator(array $data)
+    {
+        return \Validator::make($data, [
+            'list_id' => 'required',
+            'subscriber_id' => 'unique:list_subscribers',
+        ]);
     }
 }

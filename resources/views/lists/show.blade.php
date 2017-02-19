@@ -22,6 +22,7 @@
                         <thead>
                         <th>{{trans('subList.fname')}}</th>
                         <th>{{trans('subList.lname')}}</th>
+                        <th>{{trans('subList.email')}}</th>
                         <th>{{trans('subList.option')}}</th>
                         </thead>
 
@@ -36,10 +37,14 @@
                                     {{$sublist->last_name}}
                                 </td>
                                 <td>
+                                    {{$sublist->email}}
+                                </td>
+                                <td>
                                     <form action="{{url('/lists/delsubscriber')}}" method="post">
                                         {{csrf_field()}}
                                         <input type="hidden" name="subscriber_id" value="{{$sublist->id}}">
                                         <input type="hidden" name="list_id" value="{{$list->id}}">
+                                        <input type="hidden" name="name" value="{{$sublist->first_name}}">
                                         <button class="btn btn-danger">{{trans('subList.del')}}</button>
                                     </form>
                                 </td>

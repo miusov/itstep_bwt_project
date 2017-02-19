@@ -7,8 +7,11 @@
 
                 <h1 class="text-center">{{ trans('subList.h1') }}</h1>
                 <hr>
-                @if(Session::has('message'))
-                    <p style="color: green" class="text-center"><b>{{Session::get('message')}}</b></p>
+                @if ( \Session::has('flash_message') )
+                    <div class="alert alert-success alert-dismissable">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        {{\Session::get('flash_message')}}
+                    </div>
                 @endif
                 <div class="col-md-12">
                     <table class="table table-striped tablesorter" id="myTable">
@@ -32,6 +35,7 @@
                                         {{csrf_field()}}
                                         <input type="hidden" name="subscriber_id" value="{{$subscriber->id}}">
                                         <input type="hidden" name="list_id" value="{{$id}}">
+                                        <input type="hidden" name="name" value="{{$subscriber->first_name}}">
                                         <button class="btn btn-success">{{trans('subscribers.add')}}</button>
                                     </form>                                </td>
                             </tr>

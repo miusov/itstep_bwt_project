@@ -3,7 +3,7 @@
 namespace itstep\Http\Controllers;
 
 use Illuminate\Http\Request;
-use itstep\Models\SettingsModel;
+use itstep\Models\SettingsModel as Setting;
 
 class SettingsController extends Controller
 {
@@ -24,19 +24,27 @@ class SettingsController extends Controller
      */
     public function index()
     {
-        return view('settings');
+        $types=\DB::table('email_send_types')->get();
+        return view('settings',['types'=>$types]);
     }
 
     public function setsettings(Request $request){
-//        echo "Set: ".$request->type;
-//        return redirect()->back();
 
-        $type = SettingsModel::create([
-            'type' => $request->type
-        ]);
-
-
-        return redirect()->back()->with(['flash_message' => trans('messages.service',array('type' => $type->type))]);
+        $user = Setting::where('user_id',\Auth::id())->first();
+        if (!$user)
+        {
+            $setting = new Setting;
+            $setting -> type_send_id = $request->type;
+            $setting -> user_id=\Auth::id();
+            $setting -> save();
+        }
+        else
+        {
+            $setting = $user;
+            $setting -> type_send_id = $request->type;
+            $setting -> save();
+        }
+        return redirect()->back()->with(['flash_message' => trans('messages.service')]);
     
 
     }

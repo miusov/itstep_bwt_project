@@ -8,7 +8,7 @@ class SettingsModel extends Model
 {
     public $timestamps = false;
 
-    protected $table = 'email_send_types';
+    protected $table = 'email_send_settings';
     
-    protected $fillable = ['type'];
+    protected $fillable = ['user_id', 'type_send_id'];
 }
