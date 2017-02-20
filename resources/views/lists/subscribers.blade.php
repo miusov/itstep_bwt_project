@@ -7,6 +7,9 @@
 
                 <h1 class="text-center">{{ trans('subList.h1') }}</h1>
                 <hr>
+                <div class="col-md-12">
+                    <a href="{{url('/lists/'.$id)}}" class="btn btn-info">Back</a>
+                </div>
                 @if ( \Session::has('flash_message') )
                     <div class="alert alert-success alert-dismissable">
                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>

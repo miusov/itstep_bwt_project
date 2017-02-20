@@ -25,7 +25,7 @@ class SendController extends Controller
             \Auth::user()->id
             ));
 
-        return redirect()->back()->with(['flash_message' => trans('messages.send')]);
+//        return redirect()->back()->with(['flash_message' => trans('messages.send')]);
 
     	// $data = [
     	// 	'text' => $request->get('message')

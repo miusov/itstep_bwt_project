@@ -19,8 +19,11 @@ return [
     'secret' => env('MAILGUN_SECRET'),
 
 
-    
     ],
+
+    'mandrill' => array(
+        'secret' => 'c796acc09b4cdc046b2e1ed5655e50e3-us14',
+    ),
 
     'ses' => [
     'key' => env('SES_KEY'),
