@@ -143,7 +143,7 @@ class ListController extends Controller
     {
         return \Validator::make($data, [
             'list_id' => 'required',
-            'subscriber_id' => 'unique:list_subscribers',
+            'subscriber_id' => 'required',
         ]);
     }
 }

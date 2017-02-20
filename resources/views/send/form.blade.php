@@ -4,6 +4,12 @@
 
 <div class="container">
  <div class="row">
+   @if ( \Session::has('flash_message') )
+     <div class="alert alert-success alert-dismissable">
+       <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+       {{\Session::get('flash_message')}}
+     </div>
+   @endif
    <div class="col-md-8 col-md-offset-2">
      <div class="panel panel-default">
        <div class="panel-heading">{{ trans('send.smess') }}</div>
