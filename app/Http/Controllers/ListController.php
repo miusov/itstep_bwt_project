@@ -125,25 +125,18 @@ class ListController extends Controller
         $subscribers = SubscriberModel::orderBy('created_at', 'desc')->where('user_id', '=', \Auth::user()->id)->paginate(15);
         return view('lists.subscribers',['subscribers' => $subscribers,'id'=>$id]);
     }
-    
-    
+
+
     public function add(Request $request)
     {
-        $this->validator($request->all())->validate();
-
-        List_SubModel::create([
-            'list_id' => $request->list_id,
-            'subscriber_id' => $request->subscriber_id
-        ]);
+        $subscriber=SubscriberModel::findOrFail($request->subscriber_id);
+        $list=ListModel::findOrFail($request->list_id);
+        if (null ==($list->subscribers()->find($request->subscriber_id))){
+            $list->subscribers()->attach($request->subscriber_id);
+        }else{
+            return redirect()->back()->with(['flash_message' => trans('messages.issetsub')]);
+        }
         return redirect()->back()->with(['flash_message' => trans('messages.addsub', array('name' => $request->name))]);
-    
-    }
 
-    protected function validator(array $data)
-    {
-        return \Validator::make($data, [
-            'list_id' => 'required',
-            'subscriber_id' => 'required',
-        ]);
     }
 }

@@ -24,29 +24,7 @@ class SendController extends Controller
             $request->get('subject'),
             \Auth::user()->id
             ));
-
-//        return redirect()->back()->with(['flash_message' => trans('messages.send')]);
-
-    	// $data = [
-    	// 	'text' => $request->get('message')
-    	// ];
-    	// \Mail::send('emails.test', $data,
-    	// 	function ($message) use ($request){
-    	// 		$message->to($request->get('to'))->subject($request->get('subject'));
-    	// });
-
-        // $listSubscribers = ListModel::findOrFail($request->get('list_id'))->subscribers()->get();
-        // foreach ($listSubscribers as $subscriber) {
-        //     $mail = new TestMail($request->get('message'), $request->get('subject'));
-        //     \Mail::to($subscriber->email)->send($mail);
-
-        // }
-
-
-     //    $when = \Carbon\Carbon::now()->addMinutes(1);
-
-    	// $mail = new TestMail($request->get('message'), $request->get('subject'));
-    	// \Mail::to($request->get('to'))->later($when, $mail);
+        return redirect()->back()->with(['flash_message' => trans('messages.send')]);
 
     }
 }

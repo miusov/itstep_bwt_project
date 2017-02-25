@@ -11,4 +11,5 @@ return [
     'addsub' => 'Add subscribers :name',
     'delsubs' => 'Subscriber :name deleted successfully',
     'send' => 'Emails send!',
+    'issetsub' => 'This subscriber already exists in this list!',
 ];
